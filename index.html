@@ -7,49 +7,58 @@
     <script type="module" crossorigin src="/assets/index-DUjzUgbM.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BG6JoNTs.css">
   </head>
-  <script>
-    (function () {
-      const words = [
-        "а", "в", "во", "и", "к", "ко", "о", "об", "от", "по",
-        "с", "со", "у", "я", "не", "ни", "но", "на", "за", "из",
-        "до", "для", "над", "под", "при", "без", "про"
-      ];
-
-      const pattern = new RegExp(
-        "(^|\\s)(" + words.join("|") + ")\\s+",
-        "giu"
-      );
-
-      function fixText(node) {
-        if (node.nodeType === Node.TEXT_NODE) {
-          node.nodeValue = node.nodeValue.replace(
-            pattern,
-            function (_, before, word) {
-              return before + word + "\u00A0";
-            }
-          );
-          return;
-        }
-
-        if (
-          node.nodeType !== Node.ELEMENT_NODE ||
-          ["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA"].includes(node.tagName)
-        ) return;
-
-        node.childNodes.forEach(fixText);
-      }
-
-      const observer = new MutationObserver(function (changes) {
-        changes.forEach(function (change) {
-          change.addedNodes.forEach(fixText);
-        });
-      });
-
-      observer.observe(document.body, { childList: true, subtree: true });
-      fixText(document.body);
-    })();
-  </script>
   <body>
     <div id="root"></div>
+    <script>
+      (function () {
+        const words = [
+          "а", "в", "во", "и", "к", "ко", "о", "об", "от", "по",
+          "с", "со", "у", "я", "не", "ни", "но", "на", "за", "из",
+          "до", "для", "над", "под", "при", "без", "про"
+        ];
+
+        const pattern = new RegExp(
+          "(^|\\s)(" + words.join("|") + ")\\s+",
+          "giu"
+        );
+
+        function fixText(node) {
+          if (node.nodeType === Node.TEXT_NODE) {
+            node.nodeValue = node.nodeValue.replace(
+              pattern,
+              function (_, before, word) {
+                return before + word + "\u00A0";
+              }
+            );
+            return;
+          }
+
+          if (
+            node.nodeType !== Node.ELEMENT_NODE ||
+            ["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA"].includes(node.tagName)
+          ) {
+            return;
+          }
+
+          node.childNodes.forEach(fixText);
+        }
+
+        function fixAll() {
+          fixText(document.body);
+        }
+
+        const observer = new MutationObserver(fixAll);
+
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+          characterData: true
+        });
+
+        fixAll();
+        setTimeout(fixAll, 300);
+        setTimeout(fixAll, 1000);
+      })();
+    </script>  
   </body>
 </html>
