@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fashion Lab — Лаборатория моды и стиля</title>
+
     <script type="module" crossorigin src="/assets/index-DUjzUgbM.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BG6JoNTs.css">
   </head>
+
   <body>
     <div id="root"></div>
+
     <script>
       (function () {
         const words = [
@@ -18,18 +21,24 @@
         ];
 
         const pattern = new RegExp(
-          "(^|\\s)(" + words.join("|") + ")\\s+",
+          "(^|[ \\t\\r\\n])(" + words.join("|") + ")[ \\t\\r\\n]+",
           "giu"
         );
 
         function fixText(node) {
           if (node.nodeType === Node.TEXT_NODE) {
-            node.nodeValue = node.nodeValue.replace(
+            const original = node.nodeValue;
+            const updated = original.replace(
               pattern,
               function (_, before, word) {
-                return before + word + "\u00A0";
+                return before + word + "\u00A0\u2060";
               }
             );
+
+            if (updated !== original) {
+              node.nodeValue = updated;
+            }
+
             return;
           }
 
@@ -58,7 +67,8 @@
         fixAll();
         setTimeout(fixAll, 300);
         setTimeout(fixAll, 1000);
+        setTimeout(fixAll, 2000);
       })();
-    </script>  
+    </script>
   </body>
 </html>
