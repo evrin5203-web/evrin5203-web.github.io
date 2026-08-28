@@ -4,71 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fashion Lab — Лаборатория моды и стиля</title>
-
-    <script type="module" crossorigin src="/assets/index-DUjzUgbM.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BG6JoNTs.css">
+    <script type="module" crossorigin src="/assets/index-BN0nMGG6.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-5Ctpo2Pg.css">
   </head>
-
   <body>
     <div id="root"></div>
-
-    <script>
-      (function () {
-        const words = [
-          "а", "в", "во", "и", "к", "ко", "о", "об", "от", "по",
-          "с", "со", "у", "я", "не", "ни", "но", "на", "за", "из",
-          "до", "для", "над", "под", "при", "без", "про"
-        ];
-
-        const pattern = new RegExp(
-          "(^|[ \\t\\r\\n])(" + words.join("|") + ")[ \\t\\r\\n]+",
-          "giu"
-        );
-
-        function fixText(node) {
-          if (node.nodeType === Node.TEXT_NODE) {
-            const original = node.nodeValue;
-            const updated = original.replace(
-              pattern,
-              function (_, before, word) {
-                return before + word + "\u00A0\u2060";
-              }
-            );
-
-            if (updated !== original) {
-              node.nodeValue = updated;
-            }
-
-            return;
-          }
-
-          if (
-            node.nodeType !== Node.ELEMENT_NODE ||
-            ["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA"].includes(node.tagName)
-          ) {
-            return;
-          }
-
-          node.childNodes.forEach(fixText);
-        }
-
-        function fixAll() {
-          fixText(document.body);
-        }
-
-        const observer = new MutationObserver(fixAll);
-
-        observer.observe(document.body, {
-          childList: true,
-          subtree: true,
-          characterData: true
-        });
-
-        fixAll();
-        setTimeout(fixAll, 300);
-        setTimeout(fixAll, 1000);
-        setTimeout(fixAll, 2000);
-      })();
-    </script>
   </body>
 </html>
