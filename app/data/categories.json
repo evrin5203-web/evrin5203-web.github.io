@@ -1,0 +1,62 @@
+[
+  {
+    "id": "books",
+    "ru": "Книги",
+    "en": "Books"
+  },
+  {
+    "id": "product-design",
+    "ru": "Предметный дизайн",
+    "en": "Product design"
+  },
+  {
+    "id": "art",
+    "ru": "Искусство",
+    "en": "Art"
+  },
+  {
+    "id": "logo",
+    "ru": "Логотип",
+    "en": "Logo design"
+  },
+  {
+    "id": "identity",
+    "ru": "Айдентика",
+    "en": "Visual identity"
+  },
+  {
+    "id": "branding",
+    "ru": "Брендинг",
+    "en": "Branding"
+  },
+  {
+    "id": "packaging",
+    "ru": "Упаковка",
+    "en": "Packaging"
+  },
+  {
+    "id": "web",
+    "ru": "Web / UX/UI",
+    "en": "Web / UX/UI"
+  },
+  {
+    "id": "social-media",
+    "ru": "Социальные сети",
+    "en": "Social media"
+  },
+  {
+    "id": "special-project",
+    "ru": "Спецпроекты",
+    "en": "Special projects"
+  },
+  {
+    "id": "event-design",
+    "ru": "Дизайн событий",
+    "en": "Event design"
+  },
+  {
+    "id": "merch",
+    "ru": "Мерч",
+    "en": "Merchandise"
+  }
+]
