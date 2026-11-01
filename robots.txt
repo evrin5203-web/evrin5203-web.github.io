@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://evrin5203-web.github.io/portfolio/sitemap.xml
